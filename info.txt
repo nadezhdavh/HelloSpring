@@ -1,0 +1,3 @@
+docker pull mysql
+docker run -dit --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_USER=dbuser -e MYSQL_PASSWORD=1234 -e MYSQL_DATABASE=academy -d mysql
+за да се вържете към dbever - отивате в tab-a Driver properties намирате allowPublicKeyRetrieval и му сменяте стойността от false на true и също useSSL (бая скролване надолу) сменяте от true на false (edited)
