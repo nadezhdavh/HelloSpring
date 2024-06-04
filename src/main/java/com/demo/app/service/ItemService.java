@@ -6,17 +6,16 @@ import com.demo.app.model.Category;
 import com.demo.app.model.Item;
 import com.demo.app.repository.CategoryRepository;
 import com.demo.app.repository.ItemRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ItemService {
-
     private final ItemRepository itemRepository;
     private final CategoryRepository categoryRepository;
     private final ItemMapper itemMapper;
-
 
     public ItemService(ItemRepository itemRepository, CategoryRepository categoryRepository, ItemMapper itemMapper) {
         this.itemRepository = itemRepository;
@@ -24,6 +23,7 @@ public class ItemService {
         this.itemMapper = itemMapper;
     }
 
+    @Cacheable("items")
     public List<Item> getAllItems() {
         return itemRepository.findAll();
     }
