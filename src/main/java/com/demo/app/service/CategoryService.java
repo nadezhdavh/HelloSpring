@@ -4,13 +4,13 @@ import com.demo.app.dto.CategoryDTO;
 import com.demo.app.mapper.CategoryMapper;
 import com.demo.app.model.Category;
 import com.demo.app.repository.CategoryRepository;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class CategoryService {
-
     private final CategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;
 
@@ -19,6 +19,7 @@ public class CategoryService {
         this.categoryMapper = categoryMapper;
     }
 
+    @Cacheable("categories")
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
